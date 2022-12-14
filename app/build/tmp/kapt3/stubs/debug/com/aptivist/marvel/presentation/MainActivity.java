@@ -2,16 +2,16 @@ package com.aptivist.marvel.presentation;
 
 import android.os.Bundle;
 import androidx.activity.ComponentActivity;
-import androidx.compose.foundation.layout.Arrangement;
+import androidx.compose.foundation.layout.*;
 import androidx.compose.foundation.lazy.grid.GridCells;
 import androidx.compose.material.*;
 import androidx.compose.runtime.Composable;
-import androidx.compose.ui.Alignment;
 import androidx.compose.ui.Modifier;
-import androidx.compose.ui.graphics.Brush;
-import androidx.compose.ui.graphics.LinearGradient;
 import androidx.compose.ui.layout.ContentScale;
-import androidx.compose.ui.tooling.preview.Preview;
+import androidx.compose.ui.text.TextStyle;
+import androidx.compose.ui.text.font.FontStyle;
+import androidx.compose.ui.text.font.FontWeight;
+import com.aptivist.marvel.domain.models.Item;
 import com.aptivist.marvel.domain.models.Result;
 import dagger.hilt.android.AndroidEntryPoint;
 
