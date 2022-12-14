@@ -1,5 +1,7 @@
 package com.aptivist.marvel.presentation;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import androidx.activity.ComponentActivity;
 import androidx.compose.foundation.layout.*;
