@@ -96,6 +96,8 @@ fun MyCard(character: Result) {
             )
             Text(text = character.name ?: "" , modifier = Modifier.padding(top = 12.dp, start = 8.dp),fontSize = 30.sp, fontWeight = FontWeight.Bold)
 
+            Text(text = character.description?.take(100) ?: "" , modifier = Modifier.padding(top = 12.dp, start = 8.dp),fontSize = 15.sp)
+
             Text(text = "Series" , modifier = Modifier.padding(8.dp),fontSize = 20.sp)
 
             MyLazyRowSeries(character.series?.items ?: emptyList())
@@ -107,35 +109,6 @@ fun MyCard(character: Result) {
 
 
     }
-    /*Card(
-        shape = RoundedCornerShape(8.dp),
-        elevation = 20.dp,
-        modifier = Modifier
-            .size(size = 300.dp)
-            .background(
-                brush = Brush.horizontalGradient(
-                    colors = listOf(
-                        Color.Cyan,
-                        Color.Magenta
-                    )
-                )
-            )
-    ) {
-
-        Text(
-            character.name.toString(),
-            modifier = Modifier
-                .size(size = 300.dp)
-                .background(
-                    brush = Brush.horizontalGradient(
-                        colors = listOf(
-                            Color.Black,
-                            Color.Gray
-                        )
-                    )
-                ),
-        )
-    }*/
 }
 
 
