@@ -1,7 +1,9 @@
 package com.aptivist.marvel.presentation
 
 import android.util.Log
+import androidx.compose.runtime.State
 import androidx.compose.runtime.mutableStateListOf
+import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.aptivist.marvel.core.utils.Resource
@@ -37,13 +39,7 @@ class MainViewModel @Inject constructor(
 
                     is Resource.Success -> {
                         _charactersList.clear()
-                        launch(Dispatchers.Main) {
-                            result.data.map { item ->
-                                _charactersList.add(item)
-                            }
-
-
-                        }
+                        _charactersList.addAll(result.data)
                     }
                 }
             } catch (e: Exception) {

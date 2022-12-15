@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">Marvel</string>
+
+    <string name="tab_serie">Series</string>
+    <string name="tab_comic">Comics</string>
+    <string name="not_found">No Information</string>
 </resources>

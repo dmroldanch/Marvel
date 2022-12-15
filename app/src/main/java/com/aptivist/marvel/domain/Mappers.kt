@@ -50,7 +50,7 @@ fun StoriesDTO.toDomain() : Stories {
 }
 
 fun ThumbnailDTO.toDomain() : Thumbnail {
-    return Thumbnail(this.extension,this.path)
+    return Thumbnail(this.extension,this.path?.replace("http", "https"))
 }
 
 fun UrlDTO.toDomain() : Url {
