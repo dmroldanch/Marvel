@@ -28,7 +28,6 @@ class MainViewModel @Inject constructor(
     }
 
     fun getCharacters() {
-       // _viewState.value = HomeViewState.Loading
         _charactersList.clear()
         viewModelScope.launch(Dispatchers.IO) {
             try {
@@ -43,9 +42,7 @@ class MainViewModel @Inject constructor(
                     }
                 }
             } catch (e: Exception) {
-             //   ListUIEvents.ShowErrorEvent(e.message ?: stringProvider.getString(R.string.unknown))
-            } finally {
-             //   _viewState.value = HomeViewState.Idle
+                Log.e("Exception", e.message.toString())
             }
         }
     }

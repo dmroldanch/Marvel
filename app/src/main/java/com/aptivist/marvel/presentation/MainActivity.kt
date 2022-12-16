@@ -2,7 +2,6 @@ package com.aptivist.marvel.presentation
 
 import android.content.Intent
 import android.net.Uri
-import android.opengl.Visibility
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -25,7 +24,6 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.viewmodel.compose.viewModel
 import coil.compose.rememberAsyncImagePainter
 import com.aptivist.challengeapis.R
@@ -48,9 +46,8 @@ class MainActivity : ComponentActivity() {
 
                 Surface(
                     modifier = Modifier.fillMaxSize(),
-                    color = Color.DarkGray
+                    color = Color.White
                 ) {
-                    //MyList()
                     ViewPagerSlider(list)
                 }
             }
@@ -63,11 +60,15 @@ fun MyButton(url: String) {
     val context = LocalContext.current
     val intent = remember { Intent(Intent.ACTION_VIEW, Uri.parse(url)) }
 
-    Button(modifier = Modifier,
-        colors = ButtonDefaults.buttonColors(backgroundColor = Color.White),
+    IconButton(modifier = Modifier
+        .width(20.dp)
+        .height(20.dp),
         onClick = { context.startActivity(intent) }) {
-        Text(text = "Details", color = Color.Black)
+        Icon(
+            painter = painterResource(id = R.drawable.e_mark),
+            contentDescription = null)
     }
+
 }
 
 @Composable
@@ -116,19 +117,17 @@ fun MyLazyRowSeries(series: List<Item>) {
 @ExperimentalPagerApi
 @Composable
 fun ViewPagerSlider(list: List<Result>){
-
     val pagerState  = rememberPagerState(
         pageCount = list.size,
         initialPage =  0
     )
-
     val itemSelected = remember { mutableStateOf(0) }
 
     val gradient = Brush.verticalGradient(
         colors = listOf(Color.Transparent, MaterialTheme.colors.primary),
     )
 
-//    LaunchedEffect(Unit){
+//        LaunchedEffect(Unit){
 //        while (true){
 //            yield()
 //            delay(2000)
@@ -141,11 +140,11 @@ fun ViewPagerSlider(list: List<Result>){
 
     Column(modifier = Modifier.fillMaxSize()) {
 
-        Spacer(modifier = Modifier.height(10.dp))
+        Spacer(modifier = Modifier.height(5.dp))
         HorizontalPager(state = pagerState,
             modifier = Modifier
                 .weight(1f)
-                .padding(0.dp, 30.dp, 0.dp, 30.dp)
+                .padding(0.dp, 20.dp, 0.dp, 20.dp)
         ) { page ->
 
             val character = list[page]
@@ -179,7 +178,7 @@ fun ViewPagerSlider(list: List<Result>){
                             fontWeight = FontWeight.Bold,
                             color = MaterialTheme.colors.primary
                         )
-                        character.urls?.last()?.url?.let { MyButton(it) }
+                        character.urls?.last()?.url?.let { MyButton(it)}
                     }
                     Column(modifier = Modifier
                         .align(Alignment.BottomStart)
@@ -253,24 +252,10 @@ fun MyRow(modifier: Modifier = Modifier, onClickSeries : () -> Unit, onClickComi
 @Composable
 fun NotFound(){
 
-//    var value by remember { mutableStateOf( 1) }
-//    value = (1..2).random()
-//
-//    val imgRes =
-//        when(value) {
-//            1 -> "https://media0.giphy.com/media/m8wQSPsbDIbeU8hQLL/giphy.gif?cid=6c09b952917f3a8bfacd0cc1ba510e75f2e742f0d053c1f3&rid=giphy.gif&ct=s"
-//            2 -> "https://thumbs.gfycat.com/TeemingDesertedIbizanhound-max-1mb.gif"
-//            3 -> ""
-//            4 -> ""
-//            5 -> ""
-//            6 -> ""
-//            else -> "https://thumbs.gfycat.com/TeemingDesertedIbizanhound-max-1mb.gif"
-//        }
-
     Column(modifier = Modifier
         .fillMaxSize(),
         horizontalAlignment = Alignment.CenterHorizontally,
-        verticalArrangement = Arrangement.Center
+        verticalArrangement = Arrangement.Bottom
     ) {
         Image(
             painter = painterResource(id = R.drawable.anime),
