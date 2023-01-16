@@ -1,33 +1,24 @@
 package com.aptivist.marvel.presentation
 
 import android.util.Log
-import androidx.compose.runtime.State
 import androidx.compose.runtime.mutableStateListOf
-import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.aptivist.marvel.core.utils.Resource
 import com.aptivist.marvel.domain.models.Result
 import com.aptivist.marvel.domain.repository.RemoteRepository
-import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-import javax.inject.Inject
 
-@HiltViewModel
-class MainViewModel @Inject constructor(
-    private val repository: RemoteRepository
-) : ViewModel(){
-
+class MainViewModel (private val repository: RemoteRepository) : ViewModel(){
     private var _charactersList = mutableStateListOf<Result>()
     val charactersList: List<Result> get() = _charactersList
-
 
     init {
         getCharacters()
     }
 
-    fun getCharacters() {
+    private fun getCharacters() {
         _charactersList.clear()
         viewModelScope.launch(Dispatchers.IO) {
             try {
