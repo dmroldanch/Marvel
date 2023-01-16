@@ -31,17 +31,16 @@ import com.aptivist.marvel.domain.models.Item
 import com.aptivist.marvel.domain.models.Result
 import com.aptivist.marvel.presentation.ui.theme.MarvelTheme
 import com.google.accompanist.pager.*
-import dagger.hilt.android.AndroidEntryPoint
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 @OptIn(ExperimentalPagerApi::class)
-@AndroidEntryPoint
 class MainActivity : ComponentActivity() {
+    private val vm : MainViewModel by viewModel()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
             MarvelTheme {
-                val vm: MainViewModel = viewModel()
                 val list = remember { vm.charactersList }
 
                 Surface(
