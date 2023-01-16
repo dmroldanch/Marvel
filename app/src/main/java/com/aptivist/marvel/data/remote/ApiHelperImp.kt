@@ -2,13 +2,10 @@ package com.aptivist.marvel.data.remote
 
 import com.aptivist.marvel.core.utils.Resource
 import com.aptivist.marvel.domain.repository.RemoteRepository
-import javax.inject.Inject
 import com.aptivist.marvel.domain.models.Result
 import com.aptivist.marvel.domain.toDomain
 
-class ApiHelperImp @Inject constructor(
-    private val apiService: IApiMarvel
-) : RemoteRepository {
+class ApiHelperImp(private val apiService: IApiMarvel) : RemoteRepository {
     override suspend fun getCharacters(): Resource<List<Result>> {
         try {
             val reponse = apiService.getCharacters()
